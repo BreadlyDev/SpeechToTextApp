@@ -10,14 +10,14 @@ import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiInterface {
-    @POST("/register")
+    @POST("register")
     fun register(@Body registerRequest: RegisterRequest): Call<AuthResponse>
 //    @POST("/login")
 //    fun login(@Body loginRequest: LoginRequest): Call<AuthResponse>
 //=======
 //    suspend fun register(@Body registerRequest: RegisterRequest)
-    @POST("/login")
+    @POST("login")
     suspend fun login(@Body loginRequest: LoginRequest): Response<AuthResponse>
-    @POST("/logout")
+    @POST("logout")
     suspend fun logout(@Header("Authorization") bearer_token: String, @Body token: String)
 }

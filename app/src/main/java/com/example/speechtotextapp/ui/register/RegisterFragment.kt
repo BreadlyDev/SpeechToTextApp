@@ -61,7 +61,7 @@ class RegisterFragment : Fragment() {
                     val responseBody = response.body()
 
                     if(response.isSuccessful && responseBody != null) {
-                        findNavController().navigate(R.id.action_RegisterFragment_to_navActivity)
+                        findNavController().navigate(R.id.action_RegisterFragment_to_HomeFragment)
     //                    view.findViewById<TextView>(R.id.txt_activity).text = responseBody.activity
     //                    view.findViewById<TextView>(R.id.txt_accessibility).text = responseBody.accessibility.toString()
     //                    view.findViewById<TextView>(R.id.txt_participants).text = responseBody.participants.toString()
@@ -69,6 +69,7 @@ class RegisterFragment : Fragment() {
     //                        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
     //                    view.findViewById<TextView>(R.id.txt_price).text = "${responseBody.price} $"
                     }
+                    Log.d("API", "error")
                     return
                 }
 

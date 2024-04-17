@@ -78,7 +78,7 @@ class LoginFragment : Fragment() {
                 if (user != null) {
                     requireActivity().runOnUiThread {
                         Toast.makeText(context, "You are registered, please click next", Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_LoginFragment_to_navActivity)
+                        findNavController().navigate(R.id.action_LoginFragment_to_HomeFragment)
                         viewModel.token.value = user.access_token
                     }
                 } else {

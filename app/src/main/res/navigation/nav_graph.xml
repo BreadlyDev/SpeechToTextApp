@@ -10,8 +10,8 @@
         android:name="com.example.speechtotextapp.ui.login.LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
-            android:id="@+id/action_LoginFragment_to_navActivity"
-            app:destination="@id/navActivity" />
+            android:id="@+id/action_LoginFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
         <action
             android:id="@+id/action_LoginFragment_to_RegisterFragment"
             app:destination="@id/RegisterFragment" />
@@ -21,15 +21,25 @@
         android:name="com.example.speechtotextapp.ui.register.RegisterFragment"
         tools:layout="@layout/fragment_register">
         <action
-            android:id="@+id/action_RegisterFragment_to_navActivity"
-            app:destination="@id/navActivity" />
+            android:id="@+id/action_RegisterFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
         <action
             android:id="@+id/action_RegisterFragment_to_LoginFragment"
             app:destination="@id/LoginFragment" />
     </fragment>
-    <activity
-        android:id="@+id/navActivity"
-        android:name="com.example.speechtotextapp.MainActivity"
-        android:label="activity_nav"
-        tools:layout="@layout/activity_main" />
+
+    <fragment
+        android:id="@+id/HomeFragment"
+        android:name="com.example.speechtotextapp.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home"
+        >
+    </fragment>
+<!--    <activity>-->
+<!--        -->
+<!--    </activity>-->
+<!--    <activity-->
+<!--        android:id="@+id/navActivity"-->
+<!--        android:name="com.example.speechtotextapp.MainActivity"-->
+<!--        android:label="activity_nav"-->
+<!--        tools:layout="@layout/activity_main" />-->
 </navigation>
