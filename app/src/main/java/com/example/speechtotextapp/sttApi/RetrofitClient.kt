@@ -23,7 +23,8 @@ object RetrofitClient {
             .build()
     }
 
-    val apiInterface: apiInterface by lazy {
-        retrofit.create(apiInterface::class.java)
+    val apiInterface: ApiInterface by lazy {
+        retrofit.create(ApiInterface::class.java)
     }
+
 }

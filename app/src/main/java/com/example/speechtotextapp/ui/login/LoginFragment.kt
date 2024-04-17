@@ -13,11 +13,14 @@ import com.example.speechtotextapp.R
 import com.example.speechtotextapp.databinding.FragmentLoginBinding
 import com.example.speechtotextapp.liveData.AuthViewModel
 import com.example.speechtotextapp.requests.LoginRequest
+import com.example.speechtotextapp.responses.AuthResponse
 import com.example.speechtotextapp.sttApi.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import org.json.JSONObject
+import retrofit2.Response
 
 
 class LoginFragment : Fragment() {
