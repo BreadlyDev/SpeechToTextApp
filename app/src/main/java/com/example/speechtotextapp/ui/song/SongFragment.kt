@@ -1,19 +1,26 @@
 package com.example.speechtotextapp.ui.song
 
-import android.media.AudioManager
+import MusicAdapter
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.speechtotextapp.api.RetrofitClient
 import com.example.speechtotextapp.databinding.FragmentSongBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class SongFragment : Fragment() {
 
     private lateinit var binding: FragmentSongBinding
+    private lateinit var adapter: MusicAdapter
     private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreateView(
@@ -25,42 +32,29 @@ class SongFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mediaPlayer = MediaPlayer()
-        binding.apply {
-            idIBPlay.setOnClickListener {
-                var audioUrl = "http://192.168.54.19:8000/audio/2/"
+        adapter = MusicAdapter()
 
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
+        binding.musicRc.layoutManager = LinearLayoutManager(requireContext())
+        binding.musicRc.adapter = adapter
 
-                try {
-                    mediaPlayer.setDataSource(audioUrl)
 
-                    mediaPlayer.prepare()
-                    mediaPlayer.start()
-
-                } catch (e: Exception) {
-
-                    e.printStackTrace()
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = RetrofitClient.apiInterface.getAllAudio()
+            Log.e("SongFragment", "Failed to get audio list: ${response}")
+            if (!response.isEmpty()) {
+                withContext(Dispatchers.Main) {
+                    binding.apply {
+                        adapter.submitList(response)
+                    }
                 }
-                Toast.makeText(context, "Audio started playing..", Toast.LENGTH_SHORT).show()
-
+            } else {
+                Log.e("SongFragment", "Failed to get audio list: ${response}")
             }
-
-            idIBPause.setOnClickListener {
-                if (mediaPlayer.isPlaying) {
-                    mediaPlayer.stop()
-                    mediaPlayer.reset()
-                    mediaPlayer.release()
-                    Toast.makeText(context, "Audio has been  paused..", Toast.LENGTH_SHORT)
-                        .show()
-                } else {
-                    Toast.makeText(context, "Audio not played..", Toast.LENGTH_SHORT).show()
-                }
-            }
-
         }
+
+
     }
+
 
 }
 

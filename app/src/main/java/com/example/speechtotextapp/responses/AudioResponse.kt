@@ -7,3 +7,7 @@ data class AudioResponse(
     val subtitles: String,
     val title: String
 )
+
+data class AudioResponses(
+    val music: List<AudioResponse>
+)

@@ -49,20 +49,6 @@
     </fragment>
 
     <fragment
-<<<<<<< HEAD
-        android:id="@+id/songsFragment"
-        android:name="com.example.speechtotextapp.ui.songs.SongFragment"
-        android:label="fragment_songs"
-        tools:layout="@layout/fragment_song" />
-    <!--    <activity>-->
-<!--        -->
-<!--    </activity>-->
-<!--    <activity-->
-<!--        android:id="@+id/navActivity"-->
-<!--        android:name="com.example.speechtotextapp.MainActivity"-->
-<!--        android:label="activity_nav"-->
-<!--        tools:layout="@layout/activity_main" />-->
-=======
         android:id="@+id/SongFragment"
         android:name="com.example.speechtotextapp.ui.song.SongFragment"
         android:label="fragment_songs"
@@ -86,5 +72,4 @@
         tools:layout="@layout/fragment_kyrgyz">
     </fragment>
 
->>>>>>> origin/main
 </navigation>

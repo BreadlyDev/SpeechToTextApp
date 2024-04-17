@@ -3,6 +3,7 @@ package com.example.speechtotextapp.api
 import com.example.speechtotextapp.requests.LoginRequest
 import com.example.speechtotextapp.requests.RegisterRequest
 import com.example.speechtotextapp.responses.AudioResponse
+import com.example.speechtotextapp.responses.AudioResponses
 import com.example.speechtotextapp.responses.AudioSubtitleResponse
 import com.example.speechtotextapp.responses.AuthResponse
 import com.example.speechtotextapp.responses.BookResponse
@@ -37,9 +38,8 @@ interface ApiInterface {
     suspend fun getMovieById(@Path("id") id: Int): Response<ResponseBody>
     @GET("movies/{id}/subtitles/")
     suspend fun getMovieSubtitlesById(@Path("id") id: Int): Response<MovieResponse>
-    @Multipart
     @GET("audio/")
-    suspend fun getAllAudio(): Response<List<AudioResponse>>
+    suspend fun getAllAudio(): List<AudioResponse>
     @GET("audio/{id}/")
     suspend fun getAudioById(@Path("id") id: Int): Response<ResponseBody>
     @GET("audio/{id}/subtitles/")
