@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.speechtotextapp.R
@@ -62,6 +63,9 @@ class RegisterFragment : Fragment() {
 
                     if(response.isSuccessful && responseBody != null) {
                         findNavController().navigate(R.id.action_RegisterFragment_to_HomeFragment)
+                        Toast.makeText(context, "${responseBody.access_token}", Toast.LENGTH_SHORT).show()
+                        viewModel.token.value = responseBody.access_token
+
     //                    view.findViewById<TextView>(R.id.txt_activity).text = responseBody.activity
     //                    view.findViewById<TextView>(R.id.txt_accessibility).text = responseBody.accessibility.toString()
     //                    view.findViewById<TextView>(R.id.txt_participants).text = responseBody.participants.toString()
