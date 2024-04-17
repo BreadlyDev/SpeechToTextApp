@@ -22,12 +22,26 @@ class HomeFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
+            txtKyrgyz.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_KyrgyzFragment)
+            }
+            txtSong.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_SongFragment)
+            }
+            txtMovie.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_MovieFragment)
+            }
+            txtBook.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_BookFragment)
+            }
+        }
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
-            songPage.setOnClickListener{
-                findNavController().navigate(R.id.action_HomeFragment_to_songsFragment)
-            }
+//            songPage.setOnClickListener{
+//                findNavController().navigate(R.id.action_HomeFragment_to_songsFragment)
+//            }
         }
 
     }

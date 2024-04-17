@@ -1,4 +1,4 @@
-package com.example.speechtotextapp.sttApi
+package com.example.speechtotextapp.api
 
 import com.example.speechtotextapp.requests.LoginRequest
 import com.example.speechtotextapp.requests.RegisterRequest

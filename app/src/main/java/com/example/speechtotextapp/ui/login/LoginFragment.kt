@@ -1,7 +1,6 @@
 package com.example.speechtotextapp.ui.login
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,14 +12,11 @@ import com.example.speechtotextapp.R
 import com.example.speechtotextapp.databinding.FragmentLoginBinding
 import com.example.speechtotextapp.liveData.AuthViewModel
 import com.example.speechtotextapp.requests.LoginRequest
-import com.example.speechtotextapp.responses.AuthResponse
-import com.example.speechtotextapp.sttApi.RetrofitClient
+import com.example.speechtotextapp.api.RetrofitClient
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import org.json.JSONObject
-import retrofit2.Response
 
 
 class LoginFragment : Fragment() {
@@ -56,12 +52,8 @@ class LoginFragment : Fragment() {
 
     private fun auth(authRequest: LoginRequest) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = RetrofitClient.apiInterface.login(authRequest)
-
-            println("ya schedksd $response")
             try {
                 val response = RetrofitClient.apiInterface.login(authRequest)
-                println("ya sdesi $response")
                 if (!response.isSuccessful) {
                     val errorBody = response.errorBody()?.string()
                     if (!errorBody.isNullOrEmpty()) {
@@ -72,7 +64,7 @@ class LoginFragment : Fragment() {
                         }
                     } else {
                         requireActivity().runOnUiThread {
-                            Toast.makeText(context, "Unexpected error occurred", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Возникла нерпедвиденная ошибка", Toast.LENGTH_SHORT).show()
                         }
                     }
                     return@launch
@@ -81,18 +73,18 @@ class LoginFragment : Fragment() {
                 val user = response.body()
                 if (user != null) {
                     requireActivity().runOnUiThread {
-                        Toast.makeText(context, "You are registered, please click next", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Вы успешно вошли в систему", Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_LoginFragment_to_HomeFragment)
                         viewModel.token.value = user.access_token
                     }
                 } else {
                     requireActivity().runOnUiThread {
-                        Toast.makeText(context, "User not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Пользователь не найден", Toast.LENGTH_SHORT).show()
                     }
                 }
             } catch (e: Exception) {
                 requireActivity().runOnUiThread {
-                    Toast.makeText(context, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "Произошла Ошибка: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         }

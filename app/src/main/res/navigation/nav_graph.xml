@@ -16,6 +16,7 @@
             android:id="@+id/action_LoginFragment_to_RegisterFragment"
             app:destination="@id/RegisterFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/RegisterFragment"
         android:name="com.example.speechtotextapp.ui.register.RegisterFragment"
@@ -34,10 +35,21 @@
         tools:layout="@layout/fragment_home"
         >
         <action
-            android:id="@+id/action_HomeFragment_to_songsFragment"
-            app:destination="@id/songsFragment" />
+            android:id="@+id/action_HomeFragment_to_SongFragment"
+            app:destination="@id/SongFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_MovieFragment"
+            app:destination="@id/MovieFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_BookFragment"
+            app:destination="@id/BookFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_KyrgyzFragment"
+            app:destination="@id/KyrgyzFragment" />
     </fragment>
+
     <fragment
+<<<<<<< HEAD
         android:id="@+id/songsFragment"
         android:name="com.example.speechtotextapp.ui.songs.SongFragment"
         android:label="fragment_songs"
@@ -50,4 +62,29 @@
 <!--        android:name="com.example.speechtotextapp.MainActivity"-->
 <!--        android:label="activity_nav"-->
 <!--        tools:layout="@layout/activity_main" />-->
+=======
+        android:id="@+id/SongFragment"
+        android:name="com.example.speechtotextapp.ui.song.SongFragment"
+        android:label="fragment_songs"
+        tools:layout="@layout/fragment_song" />
+
+    <fragment
+        android:id="@+id/MovieFragment"
+        android:name="com.example.speechtotextapp.ui.movie.MovieFragment"
+        tools:layout="@layout/fragment_movie">
+    </fragment>
+
+    <fragment
+        android:id="@+id/BookFragment"
+        android:name="com.example.speechtotextapp.ui.book.BookFragment"
+        tools:layout="@layout/fragment_book">
+    </fragment>
+
+    <fragment
+        android:id="@+id/KyrgyzFragment"
+        android:name="com.example.speechtotextapp.ui.kyrgyz.KyrgyzFragment"
+        tools:layout="@layout/fragment_kyrgyz">
+    </fragment>
+
+>>>>>>> origin/main
 </navigation>

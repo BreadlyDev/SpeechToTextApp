@@ -1,4 +1,4 @@
-package com.example.speechtotextapp.ui.songs
+package com.example.speechtotextapp.ui.song
 
 import android.media.AudioManager
 import android.media.MediaPlayer

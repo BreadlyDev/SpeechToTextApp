@@ -1,4 +1,4 @@
-package com.example.speechtotextapp.sttApi
+package com.example.speechtotextapp.api
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
