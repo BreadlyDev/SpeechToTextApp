@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.speechtotextapp.R
+import com.example.speechtotextapp.sttApi.RetrofitClient
 
 
 class LoginFragment : Fragment() {
@@ -20,6 +21,9 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+//        val response = RetrofitClient.apiInterface.login()
+
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
