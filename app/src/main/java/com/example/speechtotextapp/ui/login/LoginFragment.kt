@@ -52,30 +52,42 @@ class LoginFragment : Fragment() {
     }
 
     private fun auth(authRequest: LoginRequest) {
-        try {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = RetrofitClient.apiInterface.login(authRequest)
-            val message = response.errorBody()?.string()?.let { JSONObject(it).getString("message") }
-            requireActivity().runOnUiThread {
-                if (message != null) {
-                    binding.txtError.text = message
-                    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+            try {
+                val response = RetrofitClient.apiInterface.login(authRequest)
+                if (!response.isSuccessful) {
+                    val errorBody = response.errorBody()?.string()
+                    if (!errorBody.isNullOrEmpty()) {
+                        val message = JSONObject(errorBody).getString("message")
+                        requireActivity().runOnUiThread {
+                            binding.txtError.text = message
+                            Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+                        }
+                    } else {
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(context, "Unexpected error occurred", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                    return@launch
                 }
+
                 val user = response.body()
                 if (user != null) {
-                    Toast.makeText(
-                        context,
-                        "you are register, please click next",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    findNavController().navigate(R.id.action_LoginFragment_to_navActivity)
-                    viewModel.token.value = user.access_token
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(context, "You are registered, please click next", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_LoginFragment_to_navActivity)
+                        viewModel.token.value = user.access_token
+                    }
+                } else {
+                    requireActivity().runOnUiThread {
+                        Toast.makeText(context, "User not found", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                requireActivity().runOnUiThread {
+                    Toast.makeText(context, "An error occurred: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
-        } catch (e: Error) {
-            Log.d("API", e.toString())
-            binding.txtError.text = e.toString()
         }
     }
 
