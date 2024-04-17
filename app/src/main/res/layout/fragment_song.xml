@@ -3,11 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    tools:context=".ui.songs.SongFragment">
-=======
     tools:context=".ui.song.SongFragment">
->>>>>>> origin/main
 
     <RelativeLayout
         android:id="@+id/container"
@@ -15,8 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--on below line we are creating
-            a text for heading of our app-->
         <TextView
             android:id="@+id/idTVExtracter"
             android:layout_width="match_parent"
@@ -29,9 +23,6 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-
-        <!--on below line we are creating an
-             image button for playing our audio-->
         <ImageButton
             android:id="@+id/idIBPlay"
             android:layout_width="100dp"
@@ -40,8 +31,6 @@
             android:background="@android:color/transparent"
             android:src="@drawable/bubble"/>
 
-        <!--on below line we are creating image
-             button for pausing our audio-->
         <ImageButton
             android:id="@+id/idIBPause"
             android:layout_width="100dp"
