@@ -10,12 +10,20 @@
               <deviceKey>
                 <Key>
                   <type value="VIRTUAL_DEVICE_PATH" />
+<<<<<<< HEAD
                   <value value="C:\Users\Maibenben\.android\avd\Redmin_Note_12_API_30.avd" />
+=======
+                  <value value="$USER_HOME$/.android/avd/Redmi_Note_9_API_34.avd" />
+>>>>>>> 47fc8ef15874a5cb7bd5cdf3a9ef0987a32599a5
                 </Key>
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
+<<<<<<< HEAD
           <timeTargetWasSelectedWithDropDown value="2024-04-17T17:28:20.827711700Z" />
+=======
+          <timeTargetWasSelectedWithDropDown value="2024-04-17T17:29:00.096505446Z" />
+>>>>>>> 47fc8ef15874a5cb7bd5cdf3a9ef0987a32599a5
         </State>
       </entry>
     </value>
