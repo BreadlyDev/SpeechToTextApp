@@ -1,9 +1,6 @@
 package com.example.speechtotextapp.responses
 
-data class MovieResponse(
-    val audio_file: Any,
-    val description: String,
-    val file: String,
+data class AudioSubtitleResponse(
     val id: Int,
     val subtitles: String,
     val title: String
