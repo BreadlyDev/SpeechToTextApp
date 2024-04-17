@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.example.speechtotextapp.R
 import com.example.speechtotextapp.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -17,30 +18,30 @@ class HomeFragment : Fragment() {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
-//        return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
-//            btnSignUp.setOnClickListener {
-//                findNavController().navigate(R.id.action_LoginFragment_to_RegisterFragment)
-//            }
-//            btnSignIn.setOnClickListener {
-//
-//            }
-//            txtKyrgyz.setOnClickListener {
-//                findNavController().navigate(R.id)
-//            }
-//            txtSong.setOnClickListener {
-//                findNavController().navigate(R.id)
-//            }
-//            txtMovie.setOnClickListener {
-//                findNavController().navigate(R.id)
-//            }
-//            txtBook.setOnClickListener {
-//                findNavController().navigate(R.id)
-//            }
+            txtKyrgyz.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_KyrgyzFragment)
+            }
+            txtSong.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_SongFragment)
+            }
+            txtMovie.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_MovieFragment)
+            }
+            txtBook.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_BookFragment)
+            }
         }
         super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+//            songPage.setOnClickListener{
+//                findNavController().navigate(R.id.action_HomeFragment_to_songsFragment)
+//            }
+        }
+
     }
 }

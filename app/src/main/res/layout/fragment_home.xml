@@ -69,59 +69,52 @@
             android:gravity="center"/>
 
         <TextView
-            android:clickable="true"
             android:id="@+id/txt_book"
             android:layout_width="160dp"
             android:layout_height="100dp"
-            android:layout_marginStart="15dp"
             android:background="@drawable/background_card_item"
+            android:clickable="true"
             android:elevation="20dp"
             android:fontFamily="@font/montserratsemibold"
             android:gravity="center"
-            android:paddingHorizontal="5dp"
-            android:text="Уроки кыргызского по книгам"
-            android:textAlignment="center"
-            android:textColor="@color/purple"
             android:textSize="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/purple"
+            android:paddingHorizontal="5dp"
+            android:text="Учить кыргызский по книгам"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="120dp" />
 
         <TextView
-            android:clickable="true"
             android:id="@+id/txt_movie"
             android:layout_width="160dp"
             android:layout_height="100dp"
             android:background="@drawable/background_card_item"
+            android:clickable="true"
             android:elevation="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/purple"
             android:fontFamily="@font/montserratsemibold"
             android:gravity="center"
             android:paddingHorizontal="5dp"
-            android:text="Уроки кыргызского по фильмам"
-            android:textAlignment="center"
-            android:textColor="@color/purple"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/view2" />
+            android:text="Учить кыргызский по фильмам"
+            tools:layout_editor_absoluteX="180dp"
+            tools:layout_editor_absoluteY="121dp" />
 
         <TextView
-            android:clickable="true"
             android:id="@+id/txt_song"
             android:layout_width="160dp"
             android:layout_height="100dp"
-            android:layout_marginStart="15dp"
             android:background="@drawable/background_card_item"
+            android:clickable="true"
             android:elevation="20dp"
+            android:textSize="20dp"
+            android:textColor="@color/purple"
             android:fontFamily="@font/montserratsemibold"
             android:gravity="center"
             android:paddingHorizontal="5dp"
-            android:text="Уроки кыргызского по песням"
-            android:textAlignment="center"
-            android:textColor="@color/purple"
-            android:textSize="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView3" />
+            android:text="Учить кыргызский по песням"
+            tools:layout_editor_absoluteX="180dp"
+            tools:layout_editor_absoluteY="1dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
