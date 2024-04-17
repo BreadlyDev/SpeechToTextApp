@@ -56,8 +56,12 @@ class LoginFragment : Fragment() {
 
     private fun auth(authRequest: LoginRequest) {
         CoroutineScope(Dispatchers.IO).launch {
+            val response = RetrofitClient.apiInterface.login(authRequest)
+
+            println("ya schedksd $response")
             try {
                 val response = RetrofitClient.apiInterface.login(authRequest)
+                println("ya sdesi $response")
                 if (!response.isSuccessful) {
                     val errorBody = response.errorBody()?.string()
                     if (!errorBody.isNullOrEmpty()) {
