@@ -33,8 +33,16 @@
         android:name="com.example.speechtotextapp.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home"
         >
+        <action
+            android:id="@+id/action_HomeFragment_to_songsFragment"
+            app:destination="@id/songsFragment" />
     </fragment>
-<!--    <activity>-->
+    <fragment
+        android:id="@+id/songsFragment"
+        android:name="com.example.speechtotextapp.ui.songs.SongsFragment"
+        android:label="fragment_songs"
+        tools:layout="@layout/fragment_songs" />
+    <!--    <activity>-->
 <!--        -->
 <!--    </activity>-->
 <!--    <activity-->

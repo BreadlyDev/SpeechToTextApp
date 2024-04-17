@@ -13,6 +13,7 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -35,6 +36,7 @@ interface ApiInterface {
     suspend fun getMovieById(@Path("id") id: Int): Response<ResponseBody>
     @GET("movies/{id}/subtitles/")
     suspend fun getMovieSubtitlesById(@Path("id") id: Int): Response<MovieResponse>
+    @Multipart
     @GET("audio/")
     suspend fun getAllAudio(): Response<List<AudioResponse>>
     @GET("audio/{id}/")

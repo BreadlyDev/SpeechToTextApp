@@ -24,7 +24,6 @@ import retrofit2.Response
 
 class RegisterFragment : Fragment() {
     private lateinit var binding: FragmentRegisterBinding
-    private val viewModel: AuthViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -63,15 +62,6 @@ class RegisterFragment : Fragment() {
 
                     if(response.isSuccessful && responseBody != null) {
                         findNavController().navigate(R.id.action_RegisterFragment_to_HomeFragment)
-                        Toast.makeText(context, "${responseBody.access_token}", Toast.LENGTH_SHORT).show()
-                        viewModel.token.value = responseBody.access_token
-
-    //                    view.findViewById<TextView>(R.id.txt_activity).text = responseBody.activity
-    //                    view.findViewById<TextView>(R.id.txt_accessibility).text = responseBody.accessibility.toString()
-    //                    view.findViewById<TextView>(R.id.txt_participants).text = responseBody.participants.toString()
-    //                    view.findViewById<TextView>(R.id.txt_type).text = responseBody.type
-    //                        .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }
-    //                    view.findViewById<TextView>(R.id.txt_price).text = "${responseBody.price} $"
                     }
                     Log.d("API", "error")
                     return
