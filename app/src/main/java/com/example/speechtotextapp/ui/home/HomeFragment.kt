@@ -8,21 +8,17 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.speechtotextapp.R
 import com.example.speechtotextapp.databinding.FragmentHomeBinding
+import com.example.speechtotextapp.databinding.FragmentRegisterBinding
 
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

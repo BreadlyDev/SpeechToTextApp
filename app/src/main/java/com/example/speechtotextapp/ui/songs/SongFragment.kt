@@ -8,19 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.speechtotextapp.databinding.FragmentSongsBinding
+import com.example.speechtotextapp.databinding.FragmentSongBinding
 
 
-class SongsFragment : Fragment() {
+class SongFragment : Fragment() {
 
-    private lateinit var binding: FragmentSongsBinding
+    private lateinit var binding: FragmentSongBinding
     private lateinit var mediaPlayer: MediaPlayer
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentSongsBinding.inflate(inflater, container, false)
+        binding = FragmentSongBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,7 +29,7 @@ class SongsFragment : Fragment() {
         mediaPlayer = MediaPlayer()
         binding.apply {
             idIBPlay.setOnClickListener {
-                var audioUrl = "http://192.168.88.77:8000/audio/2/"
+                var audioUrl = "http://192.168.54.19:8000/audio/2/"
 
                 mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC)
 
@@ -47,7 +47,7 @@ class SongsFragment : Fragment() {
 
             }
 
-            idIBPause.setOnClickListener{
+            idIBPause.setOnClickListener {
                 if (mediaPlayer.isPlaying) {
                     mediaPlayer.stop()
                     mediaPlayer.reset()
