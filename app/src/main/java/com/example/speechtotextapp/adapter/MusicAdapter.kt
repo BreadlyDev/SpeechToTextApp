@@ -1,3 +1,4 @@
+import android.content.Intent
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.view.LayoutInflater
@@ -7,43 +8,34 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.speechtotextapp.databinding.ListItemBinding
 import com.example.speechtotextapp.responses.AudioResponse
+import com.example.speechtotextapp.ui.song.SongDetailActivity
 
 class MusicAdapter : ListAdapter<AudioResponse, MusicAdapter.Holder>(Comparator()) {
-    private var currentMediaPlayer: MediaPlayer? = null
 
     class Holder(private val binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
-        lateinit var mediaPlayer: MediaPlayer
-        var isPlaying: Boolean = false
+        private var mediaPlayer: MediaPlayer? = null
+        private var isPlaying: Boolean = false
 
-        fun bind(product: AudioResponse, currentMediaPlayer: MediaPlayer?) {
+        fun bind(product: AudioResponse) {
             binding.title.text = product.title
-            mediaPlayer = MediaPlayer()
 
-            binding.idIBPlay.setOnClickListener{
-                if (isPlaying) {
-                    mediaPlayer.pause()
-                    isPlaying = false
-                } else {
-                    currentMediaPlayer?.pause() // Pause the currently playing song
-                    if (mediaPlayer.isPlaying) {
-                        mediaPlayer.pause()
-                        isPlaying = false
-                    } else {
-                        mediaPlayer.apply {
-                            setAudioStreamType(AudioManager.STREAM_MUSIC)
-                            setDataSource(product.file)
-                            prepare()
-                            start()
-                            this@Holder.isPlaying = true
-                        }
-                    }
-                }
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, SongDetailActivity::class.java)
+                intent.putExtra("id", product.id)
+                itemView.context.startActivity(intent)
             }
 
         }
 
+        fun bindMediaPlayer(mediaPlayer: MediaPlayer?) {
+            this.mediaPlayer = mediaPlayer
+        }
+
         fun stopMediaPlayer() {
-            mediaPlayer.stop()
+            mediaPlayer?.stop()
+            mediaPlayer?.release()
+            mediaPlayer = null
+            isPlaying = false
         }
     }
 
@@ -64,8 +56,8 @@ class MusicAdapter : ListAdapter<AudioResponse, MusicAdapter.Holder>(Comparator(
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val product = getItem(position)
-        holder.bind(product, currentMediaPlayer)
-        currentMediaPlayer = holder.mediaPlayer
+        holder.bind(product)
+        holder.bindMediaPlayer(currentList[position].mediaPlayer)
     }
 
     override fun onViewRecycled(holder: Holder) {
