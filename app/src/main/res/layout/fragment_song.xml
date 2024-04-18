@@ -5,8 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.song.SongFragment">
 
-    <RelativeLayout
-        android:id="@+id/container"
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/musicRc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -40,5 +41,5 @@
             android:background="@android:color/transparent"
             android:src="@drawable/user"/>
 
-    </RelativeLayout>
+    </androidx.recyclerview.widget.RecyclerView>
 </FrameLayout>
