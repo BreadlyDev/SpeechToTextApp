@@ -58,6 +58,18 @@
         android:id="@+id/MovieFragment"
         android:name="com.example.speechtotextapp.ui.movie.MovieFragment"
         tools:layout="@layout/fragment_movie">
+
+        <action
+            android:id="@+id/action_MovieFragment_to_DescriptionFragment"
+            app:destination="@id/DescriptionFragment" />
+
+        <action
+            android:id="@+id/action_MovieFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+
+<!--        <argument-->
+<!--            android:name="selectedMovie"-->
+<!--            app:argType="com.example.MovieResponse" />-->
     </fragment>
 
     <fragment
@@ -70,6 +82,17 @@
         android:id="@+id/KyrgyzFragment"
         android:name="com.example.speechtotextapp.ui.kyrgyz.KyrgyzFragment"
         tools:layout="@layout/fragment_kyrgyz">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/DescriptionFragment"
+        android:name="com.example.speechtotextapp.ui.movie.DescriptionFragment"
+        tools:layout="@layout/fragment_description">
+
+        <action
+            android:id="@+id/action_DescriptionFragment_to_MovieFragment"
+            app:destination="@id/MovieFragment"/>
     </fragment>
 
 </navigation>

@@ -37,7 +37,6 @@ class SongFragment : Fragment() {
         binding.musicRc.layoutManager = LinearLayoutManager(requireContext())
         binding.musicRc.adapter = adapter
 
-
         CoroutineScope(Dispatchers.IO).launch {
             val response = RetrofitClient.apiInterface.getAllAudio()
             Log.e("SongFragment", "Failed to get audio list: ${response}")
@@ -51,10 +50,6 @@ class SongFragment : Fragment() {
                 Log.e("SongFragment", "Failed to get audio list: ${response}")
             }
         }
-
-
     }
-
-
 }
 

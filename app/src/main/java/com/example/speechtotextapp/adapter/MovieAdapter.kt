@@ -6,15 +6,22 @@ import android.media.Image
 import android.media.ImageWriter
 import android.media.MediaMetadataRetriever
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.MediaController
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.speechtotextapp.R
 import com.example.speechtotextapp.databinding.MovieCardBinding
 import com.example.speechtotextapp.responses.MovieResponse
+import com.squareup.picasso.Picasso
 
 class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
     var list: List<MovieResponse> = listOf()
@@ -24,12 +31,17 @@ class MovieAdapter: RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
 
         fun bind(movie: MovieResponse) = with(binding) {
             txtTitle.text = movie.title
-            txtDescription.text = movie.description
-            imgMovie.setImageURI(Uri.parse(movie.image))
-//            videoMovie.setVideoURI(Uri.parse(movie.file))
-//            videoMovie.setOnClickListener {
-//                videoMovie.start()
-//            }
+            txtDescription.text = movie.subtitles
+            Picasso.get().load(movie.image).into(imgMovie)
+            btnMore.setOnClickListener {
+                val navController = Navigation.findNavController(binding.root)
+                val bundle = Bundle().apply {
+                    putString("movieTitle", movie.title)
+                    putString("movieSubtitles", movie.subtitles)
+                    putString("movieVideo", movie.file)
+                }
+                navController.navigate(R.id.action_MovieFragment_to_DescriptionFragment, bundle)
+            }
         }
     }
 

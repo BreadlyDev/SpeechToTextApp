@@ -1,15 +1,17 @@
 package com.example.speechtotextapp.ui.movie
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.example.speechtotextapp.R
 import com.example.speechtotextapp.adapter.MovieAdapter
 import com.example.speechtotextapp.api.RetrofitClient
 import com.example.speechtotextapp.databinding.FragmentMovieBinding
+import com.example.speechtotextapp.help.SpaceItemDecoration
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -43,7 +45,6 @@ class MovieFragment : Fragment() {
                     requireActivity().runOnUiThread {
                         adapter.updateList(response.body()!!)
                         Toast.makeText(context, "Вы успешно вошли в систему", Toast.LENGTH_SHORT).show()
-//                        findNavController().navigate(R.id.action_LoginFragment_to_HomeFragment)
                     }
                 } else {
                     requireActivity().runOnUiThread {
@@ -64,7 +65,11 @@ class MovieFragment : Fragment() {
     ): View? {
         binding = FragmentMovieBinding.inflate(inflater, container, false)
         val adapter = MovieAdapter()
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_MovieFragment_to_HomeFragment)
+        }
         binding.rvMovie.adapter = adapter
+        binding.rvMovie.addItemDecoration(SpaceItemDecoration(20))
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = RetrofitClient.apiInterface.getAllMovies()
@@ -104,5 +109,6 @@ class MovieFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 }
