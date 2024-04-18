@@ -8,6 +8,4 @@ data class AudioResponse(
     val id: Int,
     val subtitles: String,
     val title: String
-) {
-    val mediaPlayer: MediaPlayer? = null
-}
+)

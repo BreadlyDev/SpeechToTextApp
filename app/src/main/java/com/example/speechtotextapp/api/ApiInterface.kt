@@ -49,7 +49,7 @@ interface ApiInterface {
     suspend fun getAllAudio(): List<AudioResponse>
 
     @GET("audio/{id}/")
-    suspend fun getAudioById(@Path("id") id: Int): Response<ResponseBody>
+    suspend fun getAudioById(@Path("id") id: Int): Response<AudioResponse>
 
     @GET("audio/{id}/subtitles/")
     suspend fun getAudioSubtitlesById(@Path("id") id: Int): Response<AudioSubtitleResponse>
