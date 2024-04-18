@@ -8,20 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.speechtotextapp.R
-import com.example.speechtotextapp.databinding.FragmentDescriptionBinding
-import com.example.speechtotextapp.responses.MovieResponse
+import com.example.speechtotextapp.databinding.FragmentDescriptionMovieBinding
 
 
-class DescriptionFragment : Fragment() {
+class MovieDescriptionFragment : Fragment() {
 
-    private lateinit var binding: FragmentDescriptionBinding
+    private lateinit var binding: FragmentDescriptionMovieBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentDescriptionBinding.inflate(inflater, container, false)
+        binding = FragmentDescriptionMovieBinding.inflate(inflater, container, false)
         return binding.root
-//        return inflater.inflate(R.layout.fragment_description, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
