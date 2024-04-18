@@ -6,5 +6,6 @@ data class MovieResponse(
     val file: String,
     val id: Int,
     val subtitles: String,
-    val title: String
+    val title: String,
+    val image: String
 )

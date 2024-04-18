@@ -77,12 +77,12 @@
             android:elevation="20dp"
             android:fontFamily="@font/montserratsemibold"
             android:gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/purple"
             android:paddingHorizontal="5dp"
             android:text="Учить кыргызский по книгам"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="120dp" />
+            android:textColor="@color/purple"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/txt_movie"
@@ -91,14 +91,14 @@
             android:background="@drawable/background_card_item"
             android:clickable="true"
             android:elevation="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/purple"
             android:fontFamily="@font/montserratsemibold"
             android:gravity="center"
             android:paddingHorizontal="5dp"
             android:text="Учить кыргызский по фильмам"
-            tools:layout_editor_absoluteX="180dp"
-            tools:layout_editor_absoluteY="121dp" />
+            android:textColor="@color/purple"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/txt_song"
@@ -107,14 +107,14 @@
             android:background="@drawable/background_card_item"
             android:clickable="true"
             android:elevation="20dp"
-            android:textSize="20dp"
-            android:textColor="@color/purple"
             android:fontFamily="@font/montserratsemibold"
             android:gravity="center"
             android:paddingHorizontal="5dp"
             android:text="Учить кыргызский по песням"
-            tools:layout_editor_absoluteX="180dp"
-            tools:layout_editor_absoluteY="1dp" />
+            android:textColor="@color/purple"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
