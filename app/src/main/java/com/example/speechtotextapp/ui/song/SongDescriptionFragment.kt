@@ -3,10 +3,13 @@ package com.example.speechtotextapp.ui.song
 import android.media.AudioManager
 import android.media.MediaPlayer
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import androidx.navigation.fragment.findNavController
 import com.example.speechtotextapp.R
 import com.example.speechtotextapp.databinding.FragmentSongDescriptionBinding
@@ -14,6 +17,7 @@ import com.example.speechtotextapp.databinding.FragmentSongDescriptionBinding
 class SongDescriptionFragment : Fragment() {
     private lateinit var binding: FragmentSongDescriptionBinding
     private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var seekBar: SeekBar
     private var isPlaying: Boolean = false
 
     override fun onCreateView(
@@ -26,7 +30,6 @@ class SongDescriptionFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         mediaPlayer = MediaPlayer().apply {
             setAudioStreamType(AudioManager.STREAM_MUSIC)
@@ -60,21 +63,47 @@ class SongDescriptionFragment : Fragment() {
             }
         }
 
+        seekBar = binding.seekBar
+        mediaPlayer.setOnCompletionListener {
+            isPlaying = false
+            seekBar.progress = 0
+        }
+
+        val duration = mediaPlayer.duration
+        seekBar.max = duration
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed(object : Runnable {
+            override fun run() {
+                val currentPosition = mediaPlayer.currentPosition
+                seekBar.progress = currentPosition
+                handler.postDelayed(this, 1000) // Обновляем каждую секунду
+            }
+        }, 0)
+
+        seekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+                if (fromUser) {
+                    mediaPlayer.seekTo(progress)
+                }
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {
+            }
+
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {
+            }
+        })
+
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_SongDescriptionFragment_to_SongFragment)
         }
     }
 
-    // Функция для установки аудиофайла для проигрывания извне, например, из адаптера RecyclerView
     fun setAudio(audioPath: String) {
-        // Останавливаем предыдущее воспроизведение
         mediaPlayer.reset()
-        // Устанавливаем новый источник аудио
         mediaPlayer.setDataSource(audioPath)
-        // Подготавливаем mediaPlayer и начинаем воспроизведение
         mediaPlayer.prepare()
         mediaPlayer.start()
-        // Обновляем состояние воспроизведения
         isPlaying = true
     }
 }

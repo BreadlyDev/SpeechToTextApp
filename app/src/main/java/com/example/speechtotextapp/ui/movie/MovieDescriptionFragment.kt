@@ -23,6 +23,7 @@ class MovieDescriptionFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        var isPlayed: Boolean = false
         super.onViewCreated(view, savedInstanceState)
         val movieTitle = arguments?.getString("movieTitle")
         val movieSubtitles = arguments?.getString("movieSubtitles")
@@ -31,11 +32,21 @@ class MovieDescriptionFragment : Fragment() {
         binding.txtTitle.text = movieTitle
         binding.txtSubtitles.text = movieSubtitles
         binding.videoMovie.setVideoURI(Uri.parse(movieVideo))
-
-        binding.videoMovie.setOnClickListener {
-            binding.videoMovie.start()
+        binding.videoMovie.setOnPreparedListener { mp ->
+            mp.seekTo(5000)
         }
-
+        binding.videoMovie.setOnClickListener {
+            if (!isPlayed) {
+                binding.videoMovie.start()
+                isPlayed = true
+            } else {
+                if (binding.videoMovie.isPlaying) {
+                    binding.videoMovie.pause()
+                } else {
+                    binding.videoMovie.start()
+                }
+            }
+        }
         binding.btnBack.setOnClickListener {
             findNavController().navigate(R.id.action_DescriptionFragment_to_MovieFragment)
         }
