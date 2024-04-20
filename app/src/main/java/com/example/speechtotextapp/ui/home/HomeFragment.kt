@@ -59,6 +59,9 @@ class HomeFragment : Fragment() {
             txtBook.setOnClickListener {
                 findNavController().navigate(R.id.action_HomeFragment_to_BookFragment)
             }
+            btnBack.setOnClickListener {
+                findNavController().navigate(R.id.action_HomeFragment_to_LoginFragment)
+            }
         }
         getUser()
         super.onViewCreated(view, savedInstanceState)

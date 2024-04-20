@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.speechtotextapp.R
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.speechtotextapp.api.RetrofitClient
 import com.example.speechtotextapp.databinding.FragmentSongBinding
@@ -34,8 +36,11 @@ class SongFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         adapter = MusicAdapter()
 
-        binding.musicRc.layoutManager = LinearLayoutManager(requireContext())
-        binding.musicRc.adapter = adapter
+        binding.rvSong.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvSong.adapter = adapter
+        binding.btnBack.setOnClickListener {
+            findNavController().navigate(R.id.action_SongFragment_to_HomeFragment)
+        }
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = RetrofitClient.apiInterface.getAllAudio()

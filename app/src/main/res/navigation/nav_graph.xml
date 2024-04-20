@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_HomeFragment_to_KyrgyzFragment"
             app:destination="@id/KyrgyzFragment" />
+        <action
+            android:id="@+id/action_HomeFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
     </fragment>
 
     <fragment
@@ -53,6 +56,13 @@
         android:name="com.example.speechtotextapp.ui.song.SongFragment"
         android:label="fragment_songs"
         tools:layout="@layout/fragment_song" />
+        <action
+            android:id="@+id/action_SongFragment_to_HomeFragment"
+            app:destination="@id/HomeFragment" />
+        <action
+            android:id="@+id/action_SongFragment_toSongDescriptionFragment"
+            app:destination="@id/SongDescriptionFragment" />
+    />
 
     <fragment
         android:id="@+id/MovieFragment"
@@ -61,15 +71,11 @@
 
         <action
             android:id="@+id/action_MovieFragment_to_DescriptionFragment"
-            app:destination="@id/DescriptionFragment" />
+            app:destination="@id/MovieDescriptionFragment" />
 
         <action
             android:id="@+id/action_MovieFragment_to_HomeFragment"
             app:destination="@id/HomeFragment" />
-
-<!--        <argument-->
-<!--            android:name="selectedMovie"-->
-<!--            app:argType="com.example.MovieResponse" />-->
     </fragment>
 
     <fragment
@@ -89,9 +95,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/DescriptionFragment"
-        android:name="com.example.speechtotextapp.ui.movie.DescriptionFragment"
-        tools:layout="@layout/fragment_description">
+        android:id="@+id/MovieDescriptionFragment"
+        android:name="com.example.speechtotextapp.ui.movie.MovieDescriptionFragment"
+        tools:layout="@layout/fragment_description_movie">
 
         <action
             android:id="@+id/action_DescriptionFragment_to_MovieFragment"
@@ -102,5 +108,15 @@
         android:name="com.example.speechtotextapp.ui.kyrgyz.DescriptionBookFragment"
         android:label="fragment_description_book"
         tools:layout="@layout/fragment_description_book" />
+
+    <fragment
+        android:id="@+id/SongDescriptionFragment"
+        android:name="com.example.speechtotextapp.ui.song.SongDescriptionFragment"
+        tools:layout="@layout/fragment_song_description">
+
+        <action
+            android:id="@+id/action_SongDescriptionFragment_to_SongFragment"
+            app:destination="@id/SongFragment"/>
+    </fragment>
 
 </navigation>
