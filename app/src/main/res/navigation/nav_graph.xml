@@ -76,6 +76,9 @@
         android:id="@+id/BookFragment"
         android:name="com.example.speechtotextapp.ui.book.BookFragment"
         tools:layout="@layout/fragment_book">
+        <action
+            android:id="@+id/action_BookFragment_to_descriptionBookFragment"
+            app:destination="@id/descriptionBookFragment" />
     </fragment>
 
     <fragment
@@ -94,5 +97,10 @@
             android:id="@+id/action_DescriptionFragment_to_MovieFragment"
             app:destination="@id/MovieFragment"/>
     </fragment>
+    <fragment
+        android:id="@+id/descriptionBookFragment"
+        android:name="com.example.speechtotextapp.ui.kyrgyz.DescriptionBookFragment"
+        android:label="fragment_description_book"
+        tools:layout="@layout/fragment_description_book" />
 
 </navigation>
